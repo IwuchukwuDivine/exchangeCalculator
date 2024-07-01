@@ -1,6 +1,12 @@
-# Nuxt 3 Minimal Starter
+# Exchange Rate Calculator
+This project is a simple exchange rate calculator built with Nuxt.js. The main purpose of this project is to learn and demonstrate the use of Nuxt's built-in composable, useFetch.
 
-Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+## Features
+- Currency Conversion: Convert amounts between different currencies.
+- Real-Time Exchange Rates: Fetch real-time exchange rates using the Alpha Vantage API.
+- Nuxt.js Composable: Learn how to use the useFetch composable in a practical application.
+<img width="792" alt="Screenshot 2024-07-01 at 6 09 52 PM" src="https://github.com/IwuchukwuDivine/exchangeCalculator/assets/90557518/4f4b5044-f192-4ee2-9455-daca77ba9641">
+
 
 ## Setup
 
@@ -72,4 +78,3 @@ yarn preview
 bun run preview
 ```
 
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
