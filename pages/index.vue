@@ -23,7 +23,7 @@
     </v-card>
     <p class="mt-4 font-weight-bold" v-if="amount && convertedAmt">{{ amount }} {{ fromCurrency }} equals {{ convertedAmt }} {{ toCurrency }}</p>
     <p v-if="error" style="color: red;">{{ error }}</p>
-    <v-btn :disabled="isFetching" @click="getRate()" class="mt-4 font-weight-bold" size="large" color="red">{{ isFetching ? 'Converting' : 'Convert' }}</v-btn>
+    <v-btn :disabled="status == 'pending'" @click="getRate()" class="mt-4 font-weight-bold" size="large" color="red">{{ status == 'pending' ? 'Converting' : 'Convert' }}</v-btn>
   </v-app>
 </template>
 
@@ -38,12 +38,11 @@ const config = useRuntimeConfig()
   'USD', 'EUR', 'GBP', 'JPY', 'AUD', 'CAD', 'CHF', 'CNY', 'SEK', 'NZD', 
   'MXN', 'SGD', 'HKD', 'NOK', 'KRW', 'TRY', 'RUB', 'INR', 'BRL', 'ZAR'
 ];
-const {data, error, execute, isFetching} = await useFetch(() => {
+const {data, error, execute, status} = await useFetch(() => {
   return `https://www.alphavantage.co/query?function=CURRENCY_EXCHANGE_RATE&from_currency=${fromCurrency.value}&to_currency=${toCurrency.value}&apikey=${config.public.alphaKey}`
 } ,
 {
   immediate: false,
-  lazy: true,
   transform: (data) => {
     conversionRate.value = Number(data["Realtime Currency Exchange Rate"]["5. Exchange Rate"])
   }
